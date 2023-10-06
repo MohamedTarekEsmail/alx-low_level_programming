@@ -1,48 +1,52 @@
-#include <stdio.h>
+#include "notrebloh.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
- * string_nconcat - function to concatnate strings with n bytes
- * @s1: destination for concatnation
- * @s2: source of string
- * @n: int type for size of byte
- * Return: pointer to new memory allocated
+ * _strlen - return length of a string
+ *
+ * @s: char type
+ * Return:  length of string
+ */
+int _strlen(char *s)
+{
+	int a;
+
+	for (a = 0; s[a] != '\0'; a++)
+	{
+
+	}
+	return (a);
+}
+
+/**
+ * *_strdup - function to return pointer to string
+ * @str: pointer to string array input
+ * Return: pointer to string created
  */
 
-char *string_nconcat(char *s1, char *s2, unsigned int n)
+char *_strdup(char *str)
 {
-	int count, count1;
-	int sign = n;
 	char *ptr;
-	int len1, len2;
+	int size;
+	int x;
 
-	if (s1 == NULL)
-		s1 = "";
-	if (s2 == NULL)
-		s2 = "";
-
-	for (len1 = 0; s1[len1] != '\0'; len1++)
-		;
-	for (len2 = 0; s2[len2] != '\0'; len2++)
-		;
-
-	if (sign >= len2)
+	if (str == NULL)
 	{
-		sign = len2;
-		ptr = malloc(sizeof(char) * (len1 + len2 + 1));
-	}
-	else
-		ptr = malloc(sizeof(char) * (len1 + n + 1));
-	if (ptr == NULL)
 		return (NULL);
-	for (count = 0; count < len1; count++)
-	{
-		ptr[count] = s1[count];
 	}
-	for (count1 = 0; count1 < sign; count1++)
+	size = _strlen(str) + 1;
+	ptr = malloc(size * sizeof(char));
+
+	x = 0;
+	while (x < size)
 	{
-		ptr[count++] = s2[count1];
+		if (ptr == NULL)
+		{
+			return (NULL);
 	}
-	ptr[count++] = '\0';
+		ptr[x] = str[x];
+		x++;
+	}
 	return (ptr);
 }
